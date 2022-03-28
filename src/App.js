@@ -7,9 +7,7 @@ function App() {
   useEffect(() => {
     const getURL = async () => {
       try {
-        const res = await axiosInstance.get(
-          "https://3ic8ifp6ye.execute-api.ap-southeast-2.amazonaws.com/prod/userData"
-        );
+        const res = await axiosInstance.get();
         inputURL.current.value = res.data.url;
       } catch (error) {
         console.log(error);
@@ -23,7 +21,6 @@ function App() {
       const res = await axiosInstance({
         method: "post",
         headers: { "Content-Type": "application/json" },
-        url: "https://3ic8ifp6ye.execute-api.ap-southeast-2.amazonaws.com/prod/userData",
         data: {
           url: inputURL.current.value,
         },
